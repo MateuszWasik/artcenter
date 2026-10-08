@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import themeInit from '../scripts/theme-init.js?raw';
+import behaviors from '../scripts/behaviors.js?raw';
+
+interface Props {
+  canonical: string;
+}
+
+const { canonical } = Astro.props;
+const description = 'ArtCenter - Śląski Serwis Floty Katowice';
+---
+
+<!doctype html>
+<html class="2xl:text-[20px]" dir="ltr" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <link href="/sitemap-index.xml" rel="sitemap" />
+    <link href="/favicon.ico" rel="shortcut icon" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link href="/favicon.svg" rel="mask-icon" color="#8D46E7" />
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+    <script is:inline set:html={themeInit} />
+    <title>ArtCenter</title>
+    <meta content="index,follow" name="robots" />
+    <meta content={description} name="description" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="@onwidget" name="twitter:site" />
+    <meta content="@onwidget" name="twitter:creator" />
+    <meta content="ArtCenter" property="og:title" />
+    <meta content={description} property="og:description" />
+    <meta content="https://artcenter.com.pl" property="og:url" />
+    <meta content="website" property="og:type" />
+    <meta content="" property="og:image" />
+    <meta content="en" property="og:locale" />
+    <meta content="ArtCenter - Śląski Serwis Floty" property="og:site_name" />
+    <link href={canonical} rel="canonical" />
+    <meta content="orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M" name="google-site-verification" />
+  </head>
+  <body class="antialiased bg-page text-default tracking-tight">
+    <slot />
+    <script is:inline set:html={behaviors} />
+  </body>
+</html>
